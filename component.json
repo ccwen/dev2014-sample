@@ -1,0 +1,34 @@
+{
+  "name": "dev2014-sample",
+  "repo": "https://github.com/ksanaforge/dev2014-sample.git",
+  "description": "hello world",
+  "version": "0.0.1",
+  "keywords": [],
+  "dependencies": {
+    "ksanaforge/boot": "*",
+    "socketio/socketio": "*",
+    "brighthas/bootstrap": "*",
+    "ksana/document": "*",
+    "ksanaforge/kse": "*",
+    "component/jquery": "*",
+    "dev2014-sample/main": "*",
+    "dev2014-sample/comp1": "*"
+  },
+  "development": {},
+  "paths": [
+    "components",
+    "../components",
+    "../node_modules/"
+  ],
+  "local": [
+    "facebook/react"
+  ],
+  "license": "MIT",
+  "main": "index.js",
+  "scripts": [
+    "index.js"
+  ],
+  "styles": [
+    "index.css"
+  ]
+}

@@ -1,0 +1,22 @@
+{
+"name": "dev2014-sample",
+"version": "0.1",
+"manifest_version": 2,
+"description": "dev2014-sample",
+"icons": { "16": "icons/icon16.png",
+          "48": "icons/icon48.png",
+	    "128": "icons/icon128.png" },
+"app": {
+	"background": {
+	"scripts": ["chrome-main.js"]
+	}
+},
+"permissions": [
+"chrome://favicon/",
+"clipboardRead",
+"clipboardWrite",
+"notifications",
+{"fileSystem": ["write", "retainEntries", "directory"]},
+"storage"
+]
+}

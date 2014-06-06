@@ -1,0 +1,13 @@
+{
+  "name": "main",
+  "repo": "dev2014-sample/main",
+  "description": "hello world",
+  "version": "0.0.1",
+  "keywords": [],
+  "dependencies": {},
+  "development": {},
+  "license": "MIT",
+  "main": "index.js",
+  "scripts": ["index.js"],
+  "styles": ["index.css"]
+}
