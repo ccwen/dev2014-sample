@@ -19,10 +19,8 @@ var resultlist=React.createClass({  //should search result
 
 var main = React.createClass({
   componentDidMount:function() {
-      var that=this;
-      kde.open("yijing",function(db){
-        db.setContext(that);  // pass main component as kse search call back context
-        that.setState({db:db});   // screen will be updated
+      kde.open("yijing",this,function(db){
+        this.setState({db:db});  
       });
   },
   getInitialState: function() {
