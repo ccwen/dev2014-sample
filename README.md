@@ -10,4 +10,5 @@ rebuild database
     gulp mkdb --name=yijing
 
 run system
+
     gulp
