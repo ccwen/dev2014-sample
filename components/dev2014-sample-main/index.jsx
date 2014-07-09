@@ -36,7 +36,7 @@ var main = React.createClass({
   renderinputs:function() {  // input interface for search
     if (this.state.db) {
       return ( 
-        <div><input ref="tofind" defaultValue="物 民"></input>
+        <div><input ref="tofind" defaultValue="龍"></input>
         <button ref="btnsearch" onClick={this.dosearch}>GO</button>
         </div>
         )      
