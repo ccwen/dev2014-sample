@@ -21,27 +21,28 @@ var main = React.createClass({
     clearTimeout(this.timer);
     this.timer=setTimeout(this.dosearch.bind(this),500);
   },
-  dosearch:function() {  // 
+  dosearch:function() {  
     var tofind=this.refs.tofind.getDOMNode().value; // fetch user input
     Kse.search(this.state.db,tofind,{range:{maxhit:100}},function(data){ //call search engine
-      this.setState({res:data});
+      this.setState({res:data});  //react will update UI
     });
   },
-  openFileinstaller:function(autoclose) {
+  openFileinstaller:function(autoclose) { // open file dialog, autoclose==true for initalizing application
     return <fileinstaller quota="512M" autoclose={autoclose} needed={require_kdb} 
                      onReady={this.onReady}/>
   },   
   renderinputs:function() {  // input interface for search
     if (this.state.db) {
       return ( 
-        <div><input className="tofind" ref="tofind"  onInput={this.autosearch} defaultValue="龍"></input>
+        <div><input size="10" className="tofind" ref="tofind"  onInput={this.autosearch} defaultValue="龍"></input>
+        <span className="pull-right"><button onClick={this.fileinstallerDialog}>File installer</button></span>
         </div>
         )      
     } else {
       return <span>loading database....</span>
     }
   },
-  fidialog:function() {
+  fileinstallerDialog:function() { //open the file installer dialog
       this.setState({dialog:true});
   },
   render: function() {  //main render routine
@@ -50,7 +51,7 @@ var main = React.createClass({
     } else { 
       return (
         <div>{this.state.dialog?this.openFileinstaller():null}
-        <button onClick={this.fidialog}>file installer</button>
+        
           {this.renderinputs()}
           <resultlist res={this.state.res}/>
         </div>
