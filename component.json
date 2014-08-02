@@ -6,11 +6,11 @@
   "keywords": [],
   "dependencies": {
     "ksanaforge/boot": "*",
-    "socketio/socketio": "*",
     "brighthas/bootstrap": "*",
     "ksana/document": "*",
-    "ksanaforge/kse": "*",
-    "component/jquery": "*",
+    "ksanaforge/fileinstaller":"*",
+    "ksanaforge/checkbrowser":"*",
+    "ksanaforge/htmlfs":"*",
     "dev2014-sample/main": "*",
     "dev2014-sample/comp1": "*"
   },
