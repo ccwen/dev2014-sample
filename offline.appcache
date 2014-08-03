@@ -1,9 +1,8 @@
 CACHE MANIFEST
-# Updated on Sat Aug 02 2014 20:32:03 GMT+0800 (Taipei Standard Time)
-# Updated on Mon Jul 28 2014 13:23:08 GMT+0800 (Taipei Standard Time)
+# Updated on Sun Aug 03 2014 11:39:05 GMT+0800 (Taipei Standard Time)
 /index.html
-/build/build.js
-/build/build.css
+/build.js 
+/build.css
 /jquery.js
 /react-with-addons.js
 NETWORK:
