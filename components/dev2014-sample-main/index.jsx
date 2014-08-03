@@ -10,12 +10,11 @@ var main = React.createClass({
     return {res:null,db:null };
   },
   onReady:function(usage,quota) {  //handler when kdb is ready
-    this.setState({quota:quota,usage:usage});
     if (!this.state.db) kde.open("yijing",function(db){
         this.setState({db:db});  
         this.dosearch();
     },this);      
-    this.setState({dialog:false});
+    this.setState({dialog:false,quota:quota,usage:usage});
   },
   autosearch:function() {
     clearTimeout(this.timer);
