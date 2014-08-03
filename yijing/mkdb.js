@@ -17,7 +17,7 @@ var onFile=function(fn) {
 var finalized=function(session,status) {
 	console.log("VPOS",session.vpos);
 	console.log("PageCount",status.pageCount);
-	console.log("FINISHED")
+	console.log("FINISHED");
 }
 var config={
 	name:"yijing"
@@ -26,6 +26,7 @@ var config={
 	,pageSeparator:"_.id"
 	,reset:true
 	,finalized:finalized
+//	,outdir:".."
 	,callbacks: {
 		//beforebodystart:beforebydstart
 		//,afterbodyend:afterbodyend

@@ -1,17 +1,17 @@
-var Kde=Require('ksana-document').kde;  // Ksana Database Engine
-var Kse=Require('ksana-document').kse; // Ksana Search Engine
+var kde=Require('ksana-document').kde;  // Ksana Database Engine
+var kse=Require('ksana-document').kse; // Ksana Search Engine
 var bootstrap=Require("bootstrap");  
 var fileinstaller=Require("fileinstaller");  // install files to browser sandboxed file system
  var require_kdb=[{  //list of ydb for running this application
-  filename:"yijing.kdb"  , url:"yijing/yijing.kdb" , desc:"yijing"
-}];
+  filename:"yijing.kdb"  , url:"yijing/yijing.kdb" , desc:"周易(開明書店斷句本)"
+}];    
 var main = React.createClass({
   getInitialState: function() {
     return {res:null,db:null };
   },
   onReady:function(usage,quota) {  //handler when kdb is ready
     this.setState({quota:quota,usage:usage});
-    if (!this.state.db) Kde.openLocal("yijing.kdb",function(db){
+    if (!this.state.db) kde.open("yijing",function(db){
         this.setState({db:db});  
         this.dosearch();
     },this);      
@@ -23,12 +23,12 @@ var main = React.createClass({
   },
   dosearch:function() {  
     var tofind=this.refs.tofind.getDOMNode().value; // fetch user input
-    Kse.search(this.state.db,tofind,{range:{maxhit:100}},function(data){ //call search engine
+    kse.search(this.state.db,tofind,{range:{maxhit:100}},function(data){ //call search engine
       this.setState({res:data});  //react will update UI
     });
-  },
+  }, 
   openFileinstaller:function(autoclose) { // open file dialog, autoclose==true for initalizing application
-    return <fileinstaller quota="512M" autoclose={autoclose} needed={require_kdb} 
+    return <fileinstaller quota="128M" autoclose={autoclose} needed={require_kdb} 
                      onReady={this.onReady}/>
   },   
   renderinputs:function() {  // input interface for search
