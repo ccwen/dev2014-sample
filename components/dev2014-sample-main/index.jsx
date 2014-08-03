@@ -21,8 +21,9 @@ var main = React.createClass({
     clearTimeout(this.timer);
     this.timer=setTimeout(this.dosearch.bind(this),500);
   },
-  dosearch:function() {  
+  dosearch:function() {   
     var tofind=this.refs.tofind.getDOMNode().value; // fetch user input
+    //add fulltext:true to display all text
     kse.search(this.state.db,tofind,{range:{maxhit:100}},function(data){ //call search engine
       this.setState({res:data});  //react will update UI
     });
@@ -51,7 +52,6 @@ var main = React.createClass({
     } else { 
       return (
         <div>{this.state.dialog?this.openFileinstaller():null}
-        
           {this.renderinputs()}
           <resultlist res={this.state.res}/>
         </div>
