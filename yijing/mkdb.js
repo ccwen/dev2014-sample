@@ -21,7 +21,9 @@ var finalized=function(session,status) {
 }
 var config={
 	name:"yijing"
-	,config:"simple1"
+	,meta:{
+		config:"simple1"	
+	}
 	,glob:"*.xml"
 	,pageSeparator:"_.id"
 	,reset:true
