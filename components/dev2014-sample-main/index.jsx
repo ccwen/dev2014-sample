@@ -13,13 +13,13 @@ var main = React.createClass({
     if (!this.state.db) kde.open("yijing",function(db){
         this.setState({db:db});  
         this.dosearch();
-    },this);      
+    },this); 
     this.setState({dialog:false,quota:quota,usage:usage});
   },
   autosearch:function() {
     clearTimeout(this.timer);
     this.timer=setTimeout(this.dosearch.bind(this),500);
-  },
+  },    
   dosearch:function() {   
     var tofind=this.refs.tofind.getDOMNode().value; // fetch user input
     //add fulltext:true to display all text
