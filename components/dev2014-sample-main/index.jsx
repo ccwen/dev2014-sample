@@ -4,38 +4,50 @@ var bootstrap=Require("bootstrap");
 var fileinstaller=Require("fileinstaller");  // install files to browser sandboxed file system
  var require_kdb=[{  //list of ydb for running this application
   filename:"yijing.kdb"  , url:"yijing/yijing.kdb" , desc:"周易(開明書店斷句本)"
-}];    
-var main = React.createClass({
+}];   
+var main = React.createClass({ 
   getInitialState: function() {
     return {res:null,db:null };
-  },
+  }, 
   onReady:function(usage,quota) {  //handler when kdb is ready
-    if (!this.state.db) kde.open("yijing",function(db){
-        this.setState({db:db});  
-        this.dosearch();
-    },this); 
+    console.log("main ready2 "+ usage +" "+quota);
+    if (!this.state.db) {
+        var that=this;
+        kde.open("yijing",function(db){
+          this.setState({db:db});
+          setTimeout(function(){
+            that.dosearch();  
+          },100);
+      },this);
+    }   
     this.setState({dialog:false,quota:quota,usage:usage});
   },
   autosearch:function() {
+    console.log("autosearch");
     clearTimeout(this.timer);
     this.timer=setTimeout(this.dosearch.bind(this),500);
-  },    
-  dosearch:function() {   
+  },
+  dosearch:function() { 
     var tofind=this.refs.tofind.getDOMNode().value; // fetch user input
-    //add fulltext:true to display all text
+    //add fulltext:true to display all text  
     kse.search(this.state.db,tofind,{range:{maxhit:100}},function(data){ //call search engine
       this.setState({res:data});  //react will update UI
-    });
-  }, 
+    }); 
+  },
   openFileinstaller:function(autoclose) { // open file dialog, autoclose==true for initalizing application
     return <fileinstaller quota="128M" autoclose={autoclose} needed={require_kdb} 
                      onReady={this.onReady}/>
-  },   
+  },
+  renderInstallerButton:function(){
+    if (typeof ksanagap!="undefined") return <div></div>;
+    return <span className="pull-right"><button onClick={this.fileinstallerDialog}>File installer</button></span>; 
+  },
   renderinputs:function() {  // input interface for search
     if (this.state.db) {
       return ( 
         <div><input size="10" className="tofind" ref="tofind"  onInput={this.autosearch} defaultValue="龍"></input>
-        <span className="pull-right"><button onClick={this.fileinstallerDialog}>File installer</button></span>
+        <button onClick={this.dosearch}>Go</button>
+        {this.renderInstallerButton()}
         </div>
         )      
     } else {
@@ -48,7 +60,7 @@ var main = React.createClass({
   render: function() {  //main render routine
     if (!this.state.quota) { // install required db
         return this.openFileinstaller(true);
-    } else { 
+    } else {
       return (
         <div>{this.state.dialog?this.openFileinstaller():null}
           {this.renderinputs()}
@@ -61,10 +73,10 @@ var main = React.createClass({
       if (this.refs.tofind) this.refs.tofind.getDOMNode().focus();
   },
   componentDidMount:function() {
-      this.focus();
+      //this.focus();
   },
   componentDidUpdate:function() {
-      this.focus();
+      //this.focus();
   } 
 });
 var resultlist=React.createClass({  //should search result
