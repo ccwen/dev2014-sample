@@ -10,7 +10,7 @@ var main = React.createClass({
     return {res:null,db:null };
   }, 
   onReady:function(usage,quota) {  //handler when kdb is ready
-    console.log("main ready2 "+ usage +" "+quota);
+    //console.log("main ready2 "+ usage +" "+quota);
     if (!this.state.db) {
         var that=this;
         kde.open("yijing",function(db){

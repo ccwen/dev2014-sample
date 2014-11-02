@@ -1,0 +1,7 @@
+{
+  "version": "1",
+  "title":"周易(開明書店斷句本)",
+  "date":"2014/10/25",
+  "description":"cbeta taisho tipitaka",
+  "files":["index.html","build.js","build.css","jquery.js","react-with-addons.js","yijing.kdb"]
+}
